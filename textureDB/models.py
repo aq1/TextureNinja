@@ -6,7 +6,7 @@ class Texture(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(default='', max_length=255)
     rating = models.SmallIntegerField(default=0)
-    added = models.DateTimeField()
+    created = models.DateTimeField()
     edited = models.DateTimeField()
 
     def __str__(self):
