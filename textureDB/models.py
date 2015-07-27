@@ -15,7 +15,7 @@ class Texture(models.Model):
 
 class RealImage(models.Model):
     texture = models.ForeignKey(Texture)
-    image = models.ImageField(upload_to='RealImage/%Y/%m/%d')
+    image = models.ImageField(upload_to='textureDB/RealImage/%Y/%m/%d')
     order = models.PositiveSmallIntegerField()
 
     def __str__(self):
@@ -24,7 +24,7 @@ class RealImage(models.Model):
 
 class RenderedImage(models.Model):
     texture = models.ForeignKey(Texture)
-    image = models.ImageField(upload_to='RenderedImage/%Y/%m/%d')
+    image = models.ImageField(upload_to='textureDB/RenderedImage/%Y/%m/%d')
     order = models.PositiveSmallIntegerField()
 
     def __str__(self):
