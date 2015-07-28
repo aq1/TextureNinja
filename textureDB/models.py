@@ -3,12 +3,12 @@ from django.contrib.auth.models import User
 
 
 class Texture(models.Model):
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, related_name='textures')
     title = models.CharField(default='', max_length=255)
-    description = models.TextField()
-    rating = models.SmallIntegerField(default=0)
-    created = models.DateTimeField()
-    edited = models.DateTimeField()
+    description = models.TextField(null=True, default='')
+    rating = models.SmallIntegerField(null=True, default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    edited = models.DateTimeField(null=True)
 
     def __str__(self):
         return '{} by {}'.format(self.name, self.author)
