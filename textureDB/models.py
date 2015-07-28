@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Texture(models.Model):
     author = models.ForeignKey(User)
     title = models.CharField(default='', max_length=255)
+    description = models.TextField()
     rating = models.SmallIntegerField(default=0)
     created = models.DateTimeField()
     edited = models.DateTimeField()
