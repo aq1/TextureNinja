@@ -3,14 +3,14 @@ from django.contrib.auth.models import User
 
 
 class Texture(models.Model):
-    user = models.ForeignKey(User)
+    author = models.ForeignKey(User)
     title = models.CharField(default='', max_length=255)
     rating = models.SmallIntegerField(default=0)
     created = models.DateTimeField()
     edited = models.DateTimeField()
 
     def __str__(self):
-        return '{} by {}'.format(self.name, self.user)
+        return '{} by {}'.format(self.name, self.author)
 
 
 class RealImage(models.Model):
