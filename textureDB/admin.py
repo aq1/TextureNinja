@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+import textureDB
+
+admin.site.register(textureDB.models.Texture)
+admin.site.register(textureDB.models.RealImage)
+admin.site.register(textureDB.models.RenderedImage)

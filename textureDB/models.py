@@ -11,22 +11,22 @@ class Texture(models.Model):
     edited = models.DateTimeField(null=True)
 
     def __str__(self):
-        return '{} by {}'.format(self.name, self.author)
+        return '{} by {}'.format(self.title, self.author)
 
 
 class RealImage(models.Model):
-    texture = models.ForeignKey(Texture)
+    texture = models.ForeignKey(Texture, related_name='real_images')
     image = models.ImageField(upload_to='textureDB/RealImage/%Y/%m/%d')
     order = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return 'Real image for {}'.format(self.texture.name)
+        return 'Real image for {}'.format(self.texture.title)
 
 
 class RenderedImage(models.Model):
-    texture = models.ForeignKey(Texture)
+    texture = models.ForeignKey(Texture, related_name='rendered_images')
     image = models.ImageField(upload_to='textureDB/RenderedImage/%Y/%m/%d')
     order = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return 'Rendered image for {}'.format(self.texture.name)
+        return 'Rendered image for {}'.format(self.texture.title)
