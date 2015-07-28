@@ -1,9 +1,21 @@
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+
+from rest_framework import viewsets
+from rest_framework import permissions
+
+from textureDB.serializers import TextureSerializer, UserSerializer
+from textureDB.models import Texture
 
 
-def texture_list(request):
-    return HttpResponse('texture_list')
+class TextureViewSet(viewsets.ModelViewSet):
+    queryset = Texture.objects.all()
+    serializer_class = TextureSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 
-def texture_detail(request, pk):
-    return HttpResponse('texture_detailt')
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
